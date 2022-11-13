@@ -1,10 +1,15 @@
 package com.bridgelabz;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+    private EmployeePayrollDBService employeePayrollDBServic;
+    private double salary;
+
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
@@ -51,7 +56,16 @@ public class EmployeePayrollService {
         }
         return this.employeePayrollList;
     }
+    public void updateEmployeeSalary(String name, double Salary){
 
+        int result= employeePayrollDBServic.updateEmployeeSalary(name, Salary);
+        if(result==0)
+            return;
+        EmployeePayrollData employeePayrollData=this.employeePayrollList.get(employeePayrollDBServic.updateEmployeeSalary(name, Salary));
+        if(employeePayrollData!=null)
+            EmployeePayrollData.employeeSalary=salary;
+        
+    }
 
     public static void main (String[]args){
 

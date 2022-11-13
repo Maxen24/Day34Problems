@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class EmployeePayrollData {
     public int employeeId;
     public String employeeName;
-    public double employeeSalary;
+    public static double employeeSalary;
     public LocalDate starDate;
 
     public EmployeePayrollData(Integer id, String name, Double salary, LocalDate date) {
